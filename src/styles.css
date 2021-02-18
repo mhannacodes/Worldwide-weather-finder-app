@@ -76,6 +76,10 @@ form {
   margin: 0 auto;
 }
 
+#current-date {
+  font-size: 20px;
+}
+
 .today-date {
   border: none;
   margin: 0 auto;

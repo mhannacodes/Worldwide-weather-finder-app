@@ -27,7 +27,7 @@ function searchCity(event) {
   let cityInput = document.querySelector("#city-input").value;
   
   
-  axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput[0].toUpperCase()+cityInput.substring[1]}&units=${units}&appid=${apiKey}
+  axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&units=${units}&appid=${apiKey}
   `).then(tempOutput);
 }
 
