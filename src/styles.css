@@ -27,8 +27,8 @@ form {
 }
 
 a {
+  color: white;
   text-decoration: none;
-  color: #2b4e8a;
   font-weight: bold;
 }
 
@@ -130,8 +130,10 @@ a {
   padding: 0;
 }
 
-#github-link {
+.btn,
+.btn-success {
   display: block;
   margin: 0 auto;
   border: 0.5px solid black;
+  background-color: #2b4e8a;
 }
