@@ -26,6 +26,15 @@ form {
   text-align: right;
 }
 
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  text-transform: capitalize;
+}
+
 a {
   color: white;
   text-decoration: none;

@@ -56,6 +56,36 @@ function tempOutput (response) {
   let windSpeed = response.data.wind.speed;
   let weatherDescriptionElement = document.querySelector("#weather-details");
   weatherDescriptionElement.innerHTML = `${weatherDesc}<br>Humidity: ${weatherHumidity}%<br>Wind: ${Math.round(windSpeed)}km/h`;
+  let latitude = response.data.coord.lat;
+  let longitude = response.data.coord.lon;
+  fiveDayForecast (latitude, longitude)
+}
+
+function fiveDayForecast (lat,long) {
+  let apiKey = `d468fe5c4c50f2a8c6db046f0712510b`;
+  let units = `metric`;
+  axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=minutely,hourly&units=${units}&appid=${apiKey}`).then(fiveDayOutput);
+}
+
+function fiveDayOutput(response) {
+  console.log(response.data);
+  let fiveDayForecastList = [
+    {day:"#current-day",dayInteger:0},
+    {day:"#day-one", dayInteger:1}, 
+    {day:"#day-two",dayInteger:2}, 
+    {day:"#day-three",dayInteger:3}, 
+    {day:"#day-four",dayInteger:4}
+  ];
+  fiveDayForecastList.forEach(function(list,index) {for(let day in list) {
+  let temp  = document.querySelector(list[day] ".high-low")
+  temp.innerHTML = `${Math.round(response.data.daily(list[dayInteger]).temp.day)}°/${Math.round(response.data.daily(list[dayInteger]).temp.night)}°`;
+  let desc = document.querySelector(list[day] ".desc")
+  desc.innerHTML = response.data.daily(list[dayInteger]).weather(list[dayInteger]).main;
+  let precip = document.querySelector(list[day] ".precipitation")
+  precip.innerHTML = Math.round(response.data.daily(list[dayInteger]).rain);
+  let icon = document.querySelector(list[day] ".icon")
+  icon.innerHTML = Math.round(response.data.daily(list[dayInteger]).weather[dayInteger].icon);}
+})
 }
 
 function convertFahrenheit(event) {
