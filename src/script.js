@@ -34,6 +34,13 @@ function formatFiveDayDates (timestamp) {
   return(`${daysAbbreviation[date.getDay()]}`);
 }
 
+function cityDefault (city) {
+  let apiKey = `d468fe5c4c50f2a8c6db046f0712510b`;
+  let units = `metric`;
+  axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}
+  `).then(tempOutput);
+}
+
 function searchCity(event) {
   event.preventDefault();
   let apiKey = `d468fe5c4c50f2a8c6db046f0712510b`;
@@ -96,7 +103,7 @@ function fiveDayOutput(response) {
   let desc = document.querySelector(`${fiveDayForecasts[fiveDayForecast].day} .desc`);
   desc.innerHTML = `${response.data.daily[fiveDayForecasts[fiveDayForecast].dayInteger].weather[0].main}`;
   let precip = document.querySelector(`${fiveDayForecasts[fiveDayForecast].day} .precipitation`);
-  precip.innerHTML = `${Math.round(response.data.daily[fiveDayForecasts[fiveDayForecast].dayInteger].pop*100)}% pop`;
+  precip.innerHTML = `pop: ${Math.round(response.data.daily[fiveDayForecasts[fiveDayForecast].dayInteger].pop*100)}%`;
   let iconElement = document.querySelector(`${fiveDayForecasts[fiveDayForecast].day} .symbol`)
   iconElement.src =`https://openweathermap.org/img/wn/${response.data.daily[fiveDayForecasts[fiveDayForecast].dayInteger].weather[0].icon}.png`;
   let dayName = document.querySelector(`${fiveDayForecasts[fiveDayForecast].day} .card-title`)
@@ -122,7 +129,7 @@ function convertCelsius(event) {
   temperature.innerHTML = (temperature - 32)/(9 / 5);
 }
 
-getPosition()
+cityDefault("New York")
 
 let searchField = document.querySelector(".locationSearch");
 searchField.addEventListener("submit",searchCity);
