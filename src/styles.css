@@ -90,9 +90,10 @@ a:hover {
 }
 
 #city-name {
-  font-family: Georgia;
-  font-size: 30px;
+  font-family: "Quicksand", sans-serif;
+  font-size: 35px;
   margin: 0 auto;
+  padding: 0;
 }
 
 #current-date {
@@ -111,6 +112,10 @@ a:hover {
 
 .temp-weatherDetails {
   text-align: center;
+}
+
+#weather-details {
+  text-transform: capitalize;
 }
 
 #temp-integer {

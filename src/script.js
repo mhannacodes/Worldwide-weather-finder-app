@@ -63,7 +63,7 @@ function tempOutput (response) {
   temperature.innerHTML = tempResponse;
   let cityDisplayed = document.querySelector("#city-name");
   cityDisplayed.innerHTML = response.data.name;
-  let weatherDesc = response.data.weather[0].main;
+  let weatherDesc = response.data.weather[0].description;
   let weatherHumidity = response.data.main.humidity;
   let windSpeed = response.data.wind.speed;
   let weatherDescriptionElement = document.querySelector("#weather-details");
