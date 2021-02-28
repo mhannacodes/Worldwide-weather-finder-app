@@ -39,8 +39,6 @@ function searchCity(event) {
   let apiKey = `d468fe5c4c50f2a8c6db046f0712510b`;
   let units = `metric`;
   let cityInput = document.querySelector("#city-input").value;
-  
-  
   axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&units=${units}&appid=${apiKey}
   `).then(tempOutput);
 }
@@ -105,7 +103,6 @@ function fiveDayOutput(response) {
   dayName.innerHTML = formatFiveDayDates(response.data.daily[fiveDayForecasts[fiveDayForecast].dayInteger].dt*1000);
 }
 }
-
 
 function convertFahrenheit(event) {
   event.preventDefault();
