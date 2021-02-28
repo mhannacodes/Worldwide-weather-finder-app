@@ -69,24 +69,25 @@ function fiveDayForecast (lat,long) {
 
 function fiveDayOutput(response) {
   console.log(response.data);
-  let fiveDayForecastList = [
+  let fiveDayForecasts = [
     {day:"#current-day",dayInteger:0},
     {day:"#day-one", dayInteger:1}, 
     {day:"#day-two",dayInteger:2}, 
     {day:"#day-three",dayInteger:3}, 
     {day:"#day-four",dayInteger:4}
   ];
-  fiveDayForecastList.forEach(function(list,index) {for(let day in list) {
-  let temp  = document.querySelector(list[day] ".high-low")
-  temp.innerHTML = `${Math.round(response.data.daily(list[dayInteger]).temp.day)}°/${Math.round(response.data.daily(list[dayInteger]).temp.night)}°`;
-  let desc = document.querySelector(list[day] ".desc")
-  desc.innerHTML = response.data.daily(list[dayInteger]).weather(list[dayInteger]).main;
-  let precip = document.querySelector(list[day] ".precipitation")
-  precip.innerHTML = Math.round(response.data.daily(list[dayInteger]).rain);
-  let icon = document.querySelector(list[day] ".icon")
-  icon.innerHTML = Math.round(response.data.daily(list[dayInteger]).weather[dayInteger].icon);}
-})
+  for (let fiveDayForecast in fiveDayForecasts) {
+  let temperature  = document.querySelector(`${fiveDayForecasts[fiveDayForecast].day} .high-low`);
+  temperature.innerHTML = `${Math.round(response.data.daily[fiveDayForecasts[fiveDayForecast].dayInteger].temp.day)}°/${Math.round(response.data.daily[fiveDayForecasts[fiveDayForecast].dayInteger].temp.night)}°`;
+  let desc = document.querySelector(`${fiveDayForecasts[fiveDayForecast].day} .desc`);
+  desc.innerHTML = `${response.data.daily[fiveDayForecasts[fiveDayForecast].dayInteger].weather[0].main}`;
+  let precip = document.querySelector(`${fiveDayForecasts[fiveDayForecast].day} .precipitation`);
+  precip.innerHTML = `${Math.round(response.data.daily[fiveDayForecasts[fiveDayForecast].dayInteger].pop*100)}% pop`;
+  let iconElement = document.querySelector(`${fiveDayForecasts[fiveDayForecast].day} .symbol`)
+  iconElement.src =`https://openweathermap.org/img/wn/${response.data.daily[fiveDayForecasts[fiveDayForecast].dayInteger].weather[0].icon}.png`;
 }
+}
+
 
 function convertFahrenheit(event) {
   event.preventDefault();
