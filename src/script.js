@@ -1,4 +1,5 @@
-function formatDate(date) {
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
   let days = [
   "Sunday",
   "Monday",
@@ -17,7 +18,20 @@ function formatDate(date) {
   if (minutes < 10) {
       minutes = `0${minutes}`;
     }
-   return(`${day}</br> ${hours}:${minutes}`)
+   return(`${day}</br> ${hours}:${minutes}`)}
+
+function formatFiveDayDates (timestamp) {
+  let date = new Date(timestamp)
+  let daysAbbreviation = [
+    "Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat"
+  ]
+  return(`${daysAbbreviation[date.getDay()]}`);
 }
 
 function searchCity(event) {
@@ -56,6 +70,8 @@ function tempOutput (response) {
   let windSpeed = response.data.wind.speed;
   let weatherDescriptionElement = document.querySelector("#weather-details");
   weatherDescriptionElement.innerHTML = `${weatherDesc}<br>Humidity: ${weatherHumidity}%<br>Wind: ${Math.round(windSpeed)}km/h`;
+  let todayDate = document.querySelector("#current-date");
+  todayDate.innerHTML = `${formatDate(response.data.dt*1000)}<small>(Last Updated)</small>`;
   let latitude = response.data.coord.lat;
   let longitude = response.data.coord.lon;
   fiveDayForecast (latitude, longitude)
@@ -85,6 +101,8 @@ function fiveDayOutput(response) {
   precip.innerHTML = `${Math.round(response.data.daily[fiveDayForecasts[fiveDayForecast].dayInteger].pop*100)}% pop`;
   let iconElement = document.querySelector(`${fiveDayForecasts[fiveDayForecast].day} .symbol`)
   iconElement.src =`https://openweathermap.org/img/wn/${response.data.daily[fiveDayForecasts[fiveDayForecast].dayInteger].weather[0].icon}.png`;
+  let dayName = document.querySelector(`${fiveDayForecasts[fiveDayForecast].day} .card-title`)
+  dayName.innerHTML = formatFiveDayDates(response.data.daily[fiveDayForecasts[fiveDayForecast].dayInteger].dt*1000);
 }
 }
 
@@ -106,10 +124,6 @@ function convertCelsius(event) {
   fahrenheit.innerHTML = `°F`;
   temperature.innerHTML = (temperature - 32)/(9 / 5);
 }
-
-let currentDate = new Date();
-let todayDate = document.querySelector("#current-date");
-todayDate.innerHTML = formatDate(currentDate);
 
 let searchField = document.querySelector(".locationSearch");
 searchField.addEventListener("submit",searchCity);

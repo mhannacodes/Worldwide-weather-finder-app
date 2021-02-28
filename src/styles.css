@@ -95,6 +95,11 @@ a {
   font-size: 20px;
 }
 
+#current-date small {
+  font-size: 10px;
+  display: block;
+}
+
 .today-date {
   border: none;
   margin: 0 auto;
