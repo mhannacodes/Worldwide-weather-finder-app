@@ -43,7 +43,7 @@ function searchCity(event) {
   `).then(tempOutput);
 }
 
-function getPosition (event) {
+function getPosition () {
   navigator.geolocation.getCurrentPosition(getCoordinates);
 }
 
@@ -121,6 +121,8 @@ function convertCelsius(event) {
   fahrenheit.innerHTML = `°F`;
   temperature.innerHTML = (temperature - 32)/(9 / 5);
 }
+
+getPosition()
 
 let searchField = document.querySelector(".locationSearch");
 searchField.addEventListener("submit",searchCity);
