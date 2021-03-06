@@ -74,12 +74,24 @@ function tempOutput (response) {
   let weatherHumidity = response.data.main.humidity;
   let windSpeed = response.data.wind.speed;
   let weatherDescriptionElement = document.querySelector("#weather-details");
-  weatherDescriptionElement.innerHTML = `${weatherDesc}<br>Humidity: ${weatherHumidity}%<br>Wind: ${Math.round(windSpeed)}km/h`;
+  weatherDescriptionElement.innerHTML = `${weatherDesc}<br>Humidity: ${weatherHumidity}%<br>Wind: ${Math.round(windSpeed)} KM/H`;
   let todayDate = document.querySelector("#current-date");
   todayDate.innerHTML = `${formatDate(response.data.dt*1000)}<small>(Last Updated)</small>`;
+  setBgImage (response.data.weather[0].id);
   let latitude = response.data.coord.lat;
   let longitude = response.data.coord.lon;
   fiveDayForecast (latitude, longitude)
+}
+
+function setBgImage (id) {
+  let background = document.querySelector(".forecast-today");
+  if (200 <= id <= 299) {background.setAttribute("id", "bg-image-storm");}
+  if (300 <= id <= 599) {background.setAttribute("id", "bg-image-raindrops");}
+  if (600 <= id <= 699) {background.setAttribute("id", "bg-image-snow");}
+  if (700 <= id <= 730) {background.setAttribute("id", "bg-image-fog");}
+  if (id === 800) {background.setAttribute("id","bg-image-clear-sky");}
+  if (803 <= id <= 804) {background.setAttribute("id", "bg-image-grey-overcast");} 
+  else {background.setAttribute("id", "bg-image-partly-sunny")}
 }
 
 function fiveDayForecast (lat,long) {

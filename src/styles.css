@@ -41,10 +41,6 @@ a {
   font-weight: bold;
 }
 
-a:hover {
-  color: black;
-}
-
 .container-md {
   max-width: 700px;
   margin: 30px auto;
@@ -79,6 +75,11 @@ a:hover {
   color: white;
   background-color: #2b4e8a;
   text-align: justify;
+  transition: all 0.5ms ease-in-out;
+}
+
+#search-button:hover {
+  background-color: #2b4e8a9d;
 }
 
 #current-button {
@@ -87,8 +88,12 @@ a:hover {
   border-radius: 4px;
   background-color: whitesmoke;
   display: inline;
+  transition: all 0.5ms ease-in-out;
 }
 
+#current-button:hover {
+  background-color: #2b4e8a56;
+}
 #city-name {
   font-family: "Quicksand", sans-serif;
   font-size: 35px;
@@ -124,12 +129,54 @@ a:hover {
 
 .forecast-today {
   border: 0.5px solid grey;
+  border-radius: 3px;
   margin: 10px;
   padding: 20px;
 }
 
-.bg-image {
+#bg-image-storm {
+  background-image: url("media/lightning-storm-edit.jpeg");
+  background-size: cover;
+  background-position-y: 0;
+  background-color: transparent;
+}
+
+#bg-image-raindrops {
+  background-image: url("media/raindrops-edit.jpeg");
+  background-size: cover;
+  background-position-y: 0;
+  background-color: transparent;
+}
+#bg-image-partly-sunny {
   background-image: url("media/partly-sunny-edited.jpg");
+  background-size: cover;
+  background-position-y: 0;
+  background-color: transparent;
+}
+
+#bg-image-fog {
+  background-image: url("media/fog-edit.jpg");
+  background-size: cover;
+  background-position-y: 0;
+  background-color: transparent;
+}
+
+#bg-image-clear-sky {
+  background-image: url("media/clear-blue-sky.jpeg");
+  background-size: cover;
+  background-position-y: 0;
+  background-color: transparent;
+}
+
+#bg-image-snow {
+  background-image: url("media/clear-snowfall-edit.jfif");
+  background-size: cover;
+  background-position-y: 0;
+  background-color: transparent;
+}
+
+#bg-image-grey-overcast {
+  background-image: url("media/grey-overcast-edit.jpeg");
   background-size: cover;
   background-position-y: 0;
   background-color: transparent;
@@ -140,7 +187,6 @@ a:hover {
 }
 
 .five-day-forecast {
-  border: 0.5px solid rgb(128, 128, 128);
   margin: 10px;
   padding: 20px;
 }
@@ -163,6 +209,7 @@ a:hover {
 
 .btn-secondary:hover {
   background-color: whitesmoke;
+  color: #2b4e8a;
 }
 
 .btn span {
