@@ -84,12 +84,12 @@ function tempOutput (response) {
 
 function setBgImage (id) {
   let background = document.querySelector(".forecast-today");
-  if (200 <= id <= 299) {background.setAttribute("id", "bg-image-storm");}
-  if (300 <= id <= 599) {background.setAttribute("id", "bg-image-raindrops");}
-  if (600 <= id <= 699) {background.setAttribute("id", "bg-image-snow");}
-  if (700 <= id <= 730) {background.setAttribute("id", "bg-image-fog");}
-  if (id === 800) {background.setAttribute("id","bg-image-clear-sky");}
-  if (803 <= id <= 804) {background.setAttribute("id", "bg-image-grey-overcast");} 
+  if (200 <= id && id <= 299) {background.setAttribute("id", "bg-image-storm");}
+  if (300 <= id && id <= 599) {background.setAttribute("id", "bg-image-raindrops");}
+  if (600 <= id && id <= 699) {background.setAttribute("id", "bg-image-snow");}
+  if (700 <= id && id<= 730) {background.setAttribute("id", "bg-image-fog");}
+  if (id == 800) {background.setAttribute("id","bg-image-clear-sky");}
+  if (803 <= id && id <= 804) {background.setAttribute("id", "bg-image-grey-overcast");} 
   else {background.setAttribute("id", "bg-image-partly-sunny")}
 }
 
