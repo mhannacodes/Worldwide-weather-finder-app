@@ -139,13 +139,13 @@ function convertCelsius (event) {
   temperature.innerHTML = celsiusTemp;
 }
 
+let celsiusTemp = null;
+
 let searchField = document.querySelector(".locationSearch");
 searchField.addEventListener("submit",searchCity);
 
 let currentLocationButton = document.querySelector("#current-button");
 currentLocationButton.addEventListener("click",getPosition)
-
-let celsiusTemp = null;
 
 let celsius = document.querySelector("#units-celsius");
 celsius.addEventListener("click", convertCelsius);
