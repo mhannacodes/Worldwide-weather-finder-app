@@ -64,23 +64,23 @@ function getCoordinates (position) {
   }
 
 function tempOutput (response) {
-  console.log(response.data)
-  let tempResponse = Math.round(response.data.main.temp);
   let temperature = document.querySelector(`#temp-integer`);
-  temperature.innerHTML = tempResponse;
   let cityDisplayed = document.querySelector("#city-name");
-  cityDisplayed.innerHTML = response.data.name;
+  let weatherDescriptionElement = document.querySelector("#weather-details");
+  let todayDate = document.querySelector("#current-date");
+  let celsiusTemp = response.data.main.temp;
   let weatherDesc = response.data.weather[0].description;
   let weatherHumidity = response.data.main.humidity;
   let windSpeed = response.data.wind.speed;
-  let weatherDescriptionElement = document.querySelector("#weather-details");
-  weatherDescriptionElement.innerHTML = `${weatherDesc}<br>Humidity: ${weatherHumidity}%<br>Wind: ${Math.round(windSpeed)} KM/H`;
-  let todayDate = document.querySelector("#current-date");
-  todayDate.innerHTML = `${formatDate(response.data.dt*1000)}<small>(Last Updated)</small>`;
-  setBgImage (response.data.weather[0].id);
   let latitude = response.data.coord.lat;
   let longitude = response.data.coord.lon;
+  temperature.innerHTML = Math.round(celsiusTemp);
+  cityDisplayed.innerHTML = response.data.name;
+  weatherDescriptionElement.innerHTML = `${weatherDesc}<br>Humidity: ${weatherHumidity}%<br>Wind: ${Math.round(windSpeed)} KM/H`;
+  todayDate.innerHTML = `${formatDate(response.data.dt*1000)}<small>(Last Updated)</small>`;
+  setBgImage (response.data.weather[0].id);
   fiveDayForecast (latitude, longitude)
+  return celsiusTemp;
 }
 
 function setBgImage (id) {
@@ -126,22 +126,18 @@ function fiveDayOutput(response) {
 function convertFahrenheit(event) {
   event.preventDefault();
   let temperature = document.querySelector("#temp-integer");
-  celsius.innerHTML = `°C`;
-  fahrenheit.innerHTML = `<strong>°F</strong>`;
-  let tempF = (Number(temperature )* (9.0 / 5.0) + 32);
-  temperature.innerHTML = tempF;
+  celsius.innerHTML = "°C";
+  fahrenheit.innerHTML = "<strong>°F</strong>";
+  temperature.innerHTML = celsiusTemp*(9.0 / 5.0) + 32;
 }
 
-function convertCelsius(event) {
+function convertCelsius (event) {
   event.preventDefault();
   let temperature = document.querySelector("#temp-integer");
-  temperate = Number(temperature);
   celsius.innerHTML = "<strong>°C</strong>";
-  fahrenheit.innerHTML = `°F`;
-  temperature.innerHTML = (temperature - 32)/(9 / 5);
+  fahrenheit.innerHTML = "°F";
+  temperature.innerHTML = celsiusTemp;
 }
-
-cityDefault("New York")
 
 let searchField = document.querySelector(".locationSearch");
 searchField.addEventListener("submit",searchCity);
@@ -149,8 +145,12 @@ searchField.addEventListener("submit",searchCity);
 let currentLocationButton = document.querySelector("#current-button");
 currentLocationButton.addEventListener("click",getPosition)
 
+let celsiusTemp = null;
+
 let celsius = document.querySelector("#units-celsius");
 celsius.addEventListener("click", convertCelsius);
 
 let fahrenheit = document.querySelector("#units-fahrenheit");
 fahrenheit.addEventListener("click", convertFahrenheit);
+
+cityDefault("New York")
