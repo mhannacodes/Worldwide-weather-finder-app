@@ -88,7 +88,7 @@ function setBgImage (id) {
   if (300 <= id && id <= 599) {background.setAttribute("id", "bg-image-raindrops");}
   if (600 <= id && id <= 699) {background.setAttribute("id", "bg-image-snow");}
   if (700 <= id && id<= 730) {background.setAttribute("id", "bg-image-fog");}
-  if (id == 800) {background.setAttribute("id","bg-image-clear-sky");}
+  if (id === 800) {background.setAttribute("id","bg-image-clear-sky");}
   if (803 <= id && id <= 804) {background.setAttribute("id", "bg-image-grey-overcast");} 
   else {background.setAttribute("id", "bg-image-partly-sunny")}
 }
