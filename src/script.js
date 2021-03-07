@@ -68,7 +68,7 @@ function tempOutput (response) {
   let cityDisplayed = document.querySelector("#city-name");
   let weatherDescriptionElement = document.querySelector("#weather-details");
   let todayDate = document.querySelector("#current-date");
-  let celsiusTemp = response.data.main.temp;
+  celsiusTemp = response.data.main.temp;
   let weatherDesc = response.data.weather[0].description;
   let weatherHumidity = response.data.main.humidity;
   let windSpeed = response.data.wind.speed;
@@ -80,7 +80,6 @@ function tempOutput (response) {
   todayDate.innerHTML = `${formatDate(response.data.dt*1000)}<small>(Last Updated)</small>`;
   setBgImage (response.data.weather[0].id);
   fiveDayForecast (latitude, longitude)
-  return celsiusTemp;
 }
 
 function setBgImage (id) {
@@ -128,7 +127,7 @@ function convertFahrenheit(event) {
   let temperature = document.querySelector("#temp-integer");
   celsius.innerHTML = "°C";
   fahrenheit.innerHTML = "<strong>°F</strong>";
-  temperature.innerHTML = celsiusTemp*(9.0 / 5.0) + 32;
+  temperature.innerHTML = Math.round(celsiusTemp*(9.0 / 5.0) + 32);
 }
 
 function convertCelsius (event) {
@@ -136,7 +135,7 @@ function convertCelsius (event) {
   let temperature = document.querySelector("#temp-integer");
   celsius.innerHTML = "<strong>°C</strong>";
   fahrenheit.innerHTML = "°F";
-  temperature.innerHTML = celsiusTemp;
+  temperature.innerHTML = Math.round(celsiusTemp);
 }
 
 let celsiusTemp = null;
