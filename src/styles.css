@@ -36,9 +36,10 @@ li.desc {
 }
 
 a {
-  color: white;
+  color: black;
   text-decoration: none;
   font-weight: bold;
+  display: inline;
 }
 
 .container-md {
@@ -51,10 +52,19 @@ a {
 
 .appTitle {
   text-align: left;
+  font-size: 35px;
+  font-weight: normal;
 }
 
 .card {
   height: 100%;
+}
+
+.card.today-date,
+.card.date-city,
+.card.temp-weatherDetails {
+  background-color: transparent;
+  border: none;
 }
 
 .locationSearch {
@@ -96,7 +106,8 @@ a {
 }
 #city-name {
   font-family: "Quicksand", sans-serif;
-  font-size: 35px;
+  font-size: 40px;
+  font-weight: bold;
   margin: 0 auto;
   padding: 0;
 }
@@ -121,6 +132,9 @@ a {
 
 #weather-details {
   text-transform: capitalize;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Quicksand", sans-serif;
 }
 
 #temp-integer {
@@ -131,6 +145,11 @@ a {
   border: 0.5px solid grey;
   border-radius: 3px;
   margin: 10px;
+  padding: 20px;
+}
+
+.weatherSearch {
+  margin-bottom: 20px;
   padding: 20px;
 }
 
@@ -214,4 +233,9 @@ a {
 
 .btn span {
   font-weight: normal;
+}
+
+a,
+#github-link {
+  color: white;
 }

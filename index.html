@@ -15,31 +15,41 @@
 </head>
 <body class=bg-body>
   <div class="container-md">
-    <div class="row gx-2">
-      <div class="col-sm-6">
-        <h1 class="appTitle">
-          Worldwide <br>Weather Finder
-        </h1>
-      </div>
-      <div class="col-sm-6 my-auto">
-        <form class="locationSearch">
-          🔍
-          <input id="city-input" type="text" placeholder="Search city..." ; autocomplete="off" ;
-            autofocus="on" />
-          <input id="search-button" type="submit" value="Search"; />
-          <button id="current-button">Current Location</button>
-        </form>
-      </div>
-    </div>
-    <section class="forecast-today" id="bg-image-partly-sunny">
-      <div class="row">
-        <div class="col-sm-6 date-city">
-          <div class="card text-center">
-            <div class="card-body my-auto">
-              <p id="city-name"></p>
-            </div>
+    <div class="forecast-today" id="bg-image-partly-sunny">
+      <section class="weatherSearch">
+        <div class="row gx-2">
+          <div class="col-sm-6">
+            <h1 class="appTitle">
+              Worldwide <br>Weather Finder
+            </h1>
+          </div>
+          <div class="col-sm-6 my-auto">
+            <form class="locationSearch">
+              🔍
+              <input id="city-input" type="text" placeholder="Search city..." ; autocomplete="off" ;
+                autofocus="on" />
+              <input id="search-button" type="submit" value="Search"; />
+              <button id="current-button">Current Location</button>
+            </form>
           </div>
         </div>
+      </section>
+      <section>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="card date-city text-center">
+              <div class="card-body my-auto">
+                <p id="city-name"></p>
+              </div>
+            </div>
+          </div>
+        <div class="col-sm-6 my-auto temp-weatherDetails">
+          <h2 id="temp-integer"></h2>
+          <a href="#" id="units-celsius"><strong>°C</strong></a>
+          /
+          <a href="#" id="units-fahrenheit">°F</a>
+        </div>
+      <div class="row">
         <div class="col-sm-6">
           <div class="today-date card text-center w-50">
             <div class="card-body my-auto">
@@ -47,54 +57,24 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6 my-auto temp-weatherDetails">
-          <h2 id="temp-integer"></h2>
-          <a href="#" id="units-celsius"><strong>°C</strong></a>
-            /
-          <a href="#" id="units-fahrenheit">°F</a>
-        </div>
         <div class="col-sm-6">
-          <div class="card text-center">
+          <div class="card temp-weatherDetails text-center">
             <div class="card-body ">
               <p class="card-text" id="weather-details">Overcast<br>Precipitation<br>💨 WSW 14 KMH</p>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section class="five-day-forecast">
-      <div class="container">
-        <h3 class="five-day-title pb-3">
-          5 Day Outlook
-        </h3>
-        <div class="row">
-          <div class="col mx-1">
-            <div class="card">
-              <div class="card-body five-day-cards" id="current-day">
-                <h5 class="card-title">Today</h5>
-                <ul class="card-text">
-                  <li class="high-low">
-                    11°/8°
-                  </li>
-                  <li class="desc">
-                    Overcast
-                  </li>
-                  <li class="precipitation"> 
-                    20%
-                  </li>
-                  <li>
-                    <img class="symbol" src="https://openweathermap.org/img/wn/02d.png" alt="weather icon">
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col mx-1">
-            <div class="card">
-              <div class="card-body five-day-cards" id="day-one">
-                <h5 class="card-title">Tomorrow</h5>
+      </section>
+      <section class="five-day-forecast">
+        <div class="container">
+          <h3 class="five-day-title pb-3">
+            5 Day Outlook
+          </h3>
+          <div class="row">
+            <div class="col mx-1">
+              <div class="card">
+                <div class="card-body five-day-cards" id="current-day">
+                  <h5 class="card-title">Today</h5>
                   <ul class="card-text">
                     <li class="high-low">
                       11°/8°
@@ -102,85 +82,107 @@
                     <li class="desc">
                       Overcast
                     </li>
-                    <li class="precipitation">
+                    <li class="precipitation"> 
                       20%
                     </li>
                     <li>
                       <img class="symbol" src="https://openweathermap.org/img/wn/02d.png" alt="weather icon">
                     </li>
                   </ul>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col mx-1">
-            <div class="card">
-              <div class="card-body five-day-cards" id="day-two">
-                <h5 class="card-title">Wed</h5>
-                  <ul class="card-text">
-                    <li class="high-low">
-                      11°/8°
-                    </li>
-                    <li class="desc">
-                      Overcast
-                    </li>
-                    <li class="precipitation">
-                      20%
-                    </li>
-                    <li>
-                      <img class="symbol" src="https://openweathermap.org/img/wn/02d.png" alt="weather icon">
-                    </li>
-                  </ul>
+            <div class="col mx-1">
+              <div class="card">
+                <div class="card-body five-day-cards" id="day-one">
+                  <h5 class="card-title">Tomorrow</h5>
+                    <ul class="card-text">
+                      <li class="high-low">
+                        11°/8°
+                      </li>
+                      <li class="desc">
+                        Overcast
+                      </li>
+                      <li class="precipitation">
+                        20%
+                      </li>
+                      <li>
+                        <img class="symbol" src="https://openweathermap.org/img/wn/02d.png" alt="weather icon">
+                      </li>
+                    </ul>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col mx-1">
-            <div class="card">
-              <div class="card-body five-day-cards" id="day-three">
-                <h5 class="card-title">Thurs</h5>
-                  <ul class="card-text">
-                    <li class="high-low">
-                      11°/8°
-                    </li>
-                    <li class="desc">
-                      Overcast
-                    </li>
-                    <li class="precipitation">
-                      20%
-                    </li>
-                    <li>
-                      <img class="symbol" src="https://openweathermap.org/img/wn/02d.png" alt="weather icon">
-                    </li>
-                  </ul>
+            <div class="col mx-1">
+              <div class="card">
+                <div class="card-body five-day-cards" id="day-two">
+                  <h5 class="card-title">Wed</h5>
+                    <ul class="card-text">
+                      <li class="high-low">
+                        11°/8°
+                      </li>
+                      <li class="desc">
+                        Overcast
+                      </li>
+                      <li class="precipitation">
+                        20%
+                      </li>
+                      <li>
+                        <img class="symbol" src="https://openweathermap.org/img/wn/02d.png" alt="weather icon">
+                      </li>
+                    </ul>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col mx-1">
-            <div class="card">
-              <div class="card-body five-day-cards" id="day-four">
-                <h5 class="card-title">Fri</h5>
-                  <ul class="card-text" >
-                    <li class="high-low">
-                      11°/8°
-                    </li>
-                    <li class="desc">
-                      Overcast
-                    </li>
-                    <li class="precipitation">
-                      20%
-                    </li>
-                    <li>
-                      <img class="symbol" src="https://openweathermap.org/img/wn/02d.png" alt="weather icon">
-                    </li>
-                  </ul>
+            <div class="col mx-1">
+              <div class="card">
+                <div class="card-body five-day-cards" id="day-three">
+                  <h5 class="card-title">Thurs</h5>
+                    <ul class="card-text">
+                      <li class="high-low">
+                        11°/8°
+                      </li>
+                      <li class="desc">
+                        Overcast
+                      </li>
+                      <li class="precipitation">
+                        20%
+                      </li>
+                      <li>
+                        <img class="symbol" src="https://openweathermap.org/img/wn/02d.png" alt="weather icon">
+                      </li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col mx-1">
+              <div class="card">
+                <div class="card-body five-day-cards" id="day-four">
+                  <h5 class="card-title">Fri</h5>
+                    <ul class="card-text" >
+                      <li class="high-low">
+                        11°/8°
+                      </li>
+                      <li class="desc">
+                        Overcast
+                      </li>
+                      <li class="precipitation">
+                        20%
+                      </li>
+                      <li>
+                        <img class="symbol" src="https://openweathermap.org/img/wn/02d.png" alt="weather icon">
+                      </li>
+                    </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
     <button class="btn btn-secondary">
       <a id="#github-link" href="https://github.com/mhannacodes/Worldwide-weather-finder-app" target="_blank">Open source code <span>by Miranda Hanna</span></a> 
     </button>
+    </div>
     <script src="src/script.js"></script>
 </body>
 </html> 
