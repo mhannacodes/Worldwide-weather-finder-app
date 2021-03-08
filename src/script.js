@@ -89,8 +89,8 @@ function setBgImage (id) {
   if (600 <= id && id <= 699) {background.setAttribute("id", "bg-image-snow");}
   if (700 <= id && id<= 730) {background.setAttribute("id", "bg-image-fog");}
   if (id === 800) {background.setAttribute("id","bg-image-clear-sky");}
+  if (801 <= id && id <= 802) {background.setAttribute("id", "bg-image-partly-sunny")}
   if (803 <= id && id <= 804) {background.setAttribute("id", "bg-image-grey-overcast");} 
-  else {background.setAttribute("id", "bg-image-partly-sunny")}
 }
 
 function fiveDayForecast (lat,long) {
